@@ -9,6 +9,15 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.static('public'));
 
+// ✅ ROTA ROOT ADICIONADA AQUI
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'VERDEX API LIVE ✅', 
+    endpoints: ['/', '/api/health', '/api/plantnet'],
+    url: 'https://verdex-render.onrender.com'
+  });
+});
+
 app.get('/api/health', (req, res) => res.json({ status: 'VERDEX OK' }));
 
 app.post('/api/plantnet', (req, res) => {
